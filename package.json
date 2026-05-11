@@ -1,0 +1,12 @@
+{
+  "name": "nfc-cool-webhook-server",
+  "version": "1.0.0",
+  "description": "Simple webhook server for testing NFC.cool webhook integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
