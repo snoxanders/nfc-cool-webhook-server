@@ -73,8 +73,7 @@ app.get("/", (req, res) => {
     ${AUTH_ENABLED ? ' &middot; Credentials: <span>' + USERNAME + '</span> / <span>' + PASSWORD + '</span>' : ''}
   </div>
   <div class="container" id="webhooks">
-    ${webhookHistory.length === 0 ? '<div class="empty"><div class="icon">📡</div><p>No webhooks received yet.<br>Scan an NFC tag with NFC.cool to see data here.</p></div>' : ''}
-    ${webhookHistory.map(w => renderWebhook(w)).join('')}
+    <div class="empty"><div class="icon">📡</div><p>No webhooks received yet.<br>Scan an NFC tag with NFC.cool to see data here.</p></div>
   </div>
   <script>
     setInterval(() => fetch('/api/webhooks').then(r => r.json()).then(data => {
