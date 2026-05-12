@@ -1,6 +1,6 @@
 # NFC.cool Webhook Server
 
-A simple webhook server for testing [NFC.cool](https://nfc.cool) webhook integration.
+A simple webhook server with web dashboard for testing [NFC.cool](https://nfc.cool) webhook integration.
 
 ## Quick Start
 
@@ -11,11 +11,18 @@ npm install
 npm start
 ```
 
-The server starts on port 3000 with HTTP Basic Authentication enabled by default.
+Open `http://localhost:3000` in your browser to see the dashboard.
+
+## Dashboard
+
+The server includes a web dashboard that displays received webhooks in real time. Open `http://localhost:3000` in your browser after starting the server.
+
+The dashboard shows:
+- Tag type (NFC Tag or OpenPrintTag)
+- Identifier, content, and timestamp
+- Full structured data for OpenPrintTag scans
 
 ## Configuration
-
-Set environment variables to customize:
 
 | Variable | Default | Description |
 |---|---|---|
@@ -37,6 +44,7 @@ AUTH_ENABLED=false npm start
 3. Enable the webhook
 4. (Optional) Enable HTTP Authentication with username `admin` and password `secret`
 5. Tap "Test Webhook" to verify the connection
+6. Open `http://YOUR_IP:3000` in your browser to see incoming webhooks
 
 ## Payload Format
 
@@ -77,21 +85,9 @@ AUTH_ENABLED=false npm start
 
 ## Testing with cURL
 
-### With authentication
-
 ```bash
 curl -X POST http://localhost:3000/webhook \
   -u admin:secret \
-  -H "Content-Type: application/json" \
-  -d '{"identifier":"04:EC:FC:A2:94:10:90","date":"2026-05-11T15:00:00Z","content":"https://nfc.cool"}'
-```
-
-### Without authentication
-
-```bash
-AUTH_ENABLED=false npm start
-# In another terminal:
-curl -X POST http://localhost:3000/webhook \
   -H "Content-Type: application/json" \
   -d '{"identifier":"04:EC:FC:A2:94:10:90","date":"2026-05-11T15:00:00Z","content":"https://nfc.cool"}'
 ```
